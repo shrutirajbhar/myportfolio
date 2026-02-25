@@ -77,6 +77,26 @@ nav a.active{
     transform:translateY(0);
 }
 
+/* Circular profile photo */
+.profile-photo{
+    display:block;
+    margin:20px auto;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:3px solid cyan;
+    object-fit:cover;
+    box-shadow:0 5px 15px rgba(0,0,0,0.5);
+    opacity:0;
+    transform:translateY(50px);
+    transition:0.6s;
+}
+
+.profile-photo.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
 a{
     color:cyan;
     text-decoration:none;
@@ -95,10 +115,14 @@ a{
     <a class="nav-link" data-target="#contact">Contact</a>
 </nav>
 
+<!-- Home Section with circular profile photo -->
 <div id="home" class="section">
     <h1>Hi, I'm <span id="typing"></span></h1>
+    <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c7b4c" 
+         alt="Profile Photo" class="profile-photo show">
 </div>
 
+<!-- About Section -->
 <div id="about" class="section">
     <div class="box">
         <h2>About Me</h2>
@@ -107,6 +131,7 @@ a{
     </div>
 </div>
 
+<!-- Skills Section -->
 <div id="skills" class="section">
     <div class="box">
         <h2>Skills</h2>
@@ -114,6 +139,7 @@ a{
     </div>
 </div>
 
+<!-- Projects Section -->
 <div id="projects" class="section">
     <div class="box">
         <h2>Projects</h2>
@@ -121,6 +147,7 @@ a{
     </div>
 </div>
 
+<!-- Contact Section -->
 <div id="contact" class="section">
     <div class="box">
         <h2>Contact</h2>
@@ -199,8 +226,8 @@ $(document).ready(function(){
             }
         });
 
-        // Reveal boxes
-        $('.box').each(function(){
+        // Reveal boxes and images
+        $('.box, .profile-photo').each(function(){
             if(scrollPos + $(window).height() > $(this).offset().top + 100){
                 $(this).addClass('show');
             }
